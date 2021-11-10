@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.kick--btn{
+  @apply w-full px-6 py-3 mb-2 text-lg text-white bg-green-400 rounded-2xl sm:w-auto sm:mb-0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const navigation = [
   { name: 'Home', to: '/home', current: true },
-  { name: 'Team', to: '/', current: false },
+  { name: 'Explore', to: '/explore', current: false },
   { name: 'Projects', to: '/', current: false },
   { name: 'Calendar', to: '/', current: false },
 ]
@@ -52,7 +52,7 @@ export default function Navbar() {
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <Link to={item.to} className={classNames(
-                          item.current ? 'bg-green-500 text-white' : 'text-gray-300 hover:bg-yellow-400 hover:text-white',
+                          item.current ? 'bg-green-500 text-white' : 'bg-yellow-400 bg-opacity-50 text-white',
                           'px-3 py-2 rounded-md text-sm font-medium'
                         )}>{item.name}</Link>
                     ))}
@@ -135,7 +135,7 @@ export default function Navbar() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    item.current ? 'bg-green-500 text-white' : 'bg-yellow-400 hover:bg-yellow-600 text-white',
                     'block px-3 py-2 rounded-md text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
