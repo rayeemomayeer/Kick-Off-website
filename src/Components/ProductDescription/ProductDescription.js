@@ -112,7 +112,7 @@ progress: undefined,
         </h2>
         <div className="max-w-sm mx-auto md:w-2/3">
           <div className=" relative ">
-            <input readonly onBlur={handleOnBlur} type="text" name="email" id="user-info-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" defaultValue={user?.email} />
+            <input required onBlur={handleOnBlur} type="text" name="email" id="user-info-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" defaultValue={user?.email} />
           </div>
         </div>
       </div>
