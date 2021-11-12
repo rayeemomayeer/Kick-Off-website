@@ -14,6 +14,7 @@ import Login from './Components/Login/Login/Login';
 import Register from './Components/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <PrivateRoute path="/boot/:bootId">
             <ProductDescription/>
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard">
+            <Dashboard />
           </PrivateRoute>
         </Switch>
       </Router>

@@ -9,9 +9,7 @@ import useAuth from '../../../hooks/useAuth'
 
 const navigation = [
   { name: 'Home', to: '/home', current: true },
-  { name: 'Explore', to: '/explore', current: false },
-  { name: 'Dashboard', to: '/dashboard', current: false },
-  { name: 'Calendar', to: '/', current: false },
+  { name: 'Explore', to: '/explore', current: false }
 ]
 
 function classNames(...classes) {
@@ -59,10 +57,16 @@ export default function Navbar() {
                           'px-3 py-2 rounded-md text-sm font-medium'
                         )}>{item.name}</Link>
                     ))}
+                    {
+                  user?.email? <Link to="/dashboard"><button  className="bg-yellow-400 bg-opacity-50 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</button></Link> 
+                  : <span></span>
+
+                }
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                
                 {
                   user?.email? <button onClick={logOut}  className="bg-gray-600 px-4 py-2 rounded-lg text-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white hover:font-bold">Logout</button> 
                   : <Link to="/login"><button type="button" className="bg-blue-600 px-4 py-2 rounded-lg text-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white hover:font-bold"
