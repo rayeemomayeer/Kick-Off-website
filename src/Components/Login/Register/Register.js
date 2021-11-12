@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
@@ -15,8 +15,9 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 const Register = () => {
   const {user,registerUser , isLoading,authError} = useAuth();
   const [loginData, setLoginData] = useState({})
+  const history = useHistory();
   
-  const handleOnChange = e => {
+  const handleOnBlur = e => {
     const field = e.target.name;
     const value = e.target.value;
     const newLoginData = {...loginData};
@@ -29,7 +30,7 @@ const Register = () => {
       e.preventDefault();
       return
     }
-    registerUser(loginData.email, loginData.password)
+    registerUser(loginData.email, loginData.password,loginData.name, history)
     e.preventDefault();
   }
   return (
@@ -47,17 +48,21 @@ const Register = () => {
       <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Create an Account</h1>
       <form className="mt-6" onSubmit={handleLoginSubmit}>
         <div>
+          <label className="block text-gray-700">Name</label>
+          <input type="name" name="name" onBlur={handleOnBlur} id placeholder="Enter Your Name" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autoComplete required />
+        </div>
+        <div className="mt-4">
           <label className="block text-gray-700">Email Address</label>
-          <input type="email" name="email" onChange={handleOnChange} id placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autoComplete required />
+          <input type="email" name="email" onBlur={handleOnBlur} id placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autoComplete required />
         </div>
         <div className="mt-4">
           <label className="block text-gray-700">Password</label>
-          <input type="password" name="password" onChange={handleOnChange} id placeholder="Enter Password" minLength={6} className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+          <input type="password" name="password" onBlur={handleOnBlur} id placeholder="Enter Password" minLength={6} className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
           focus:bg-white focus:outline-none" required />
         </div>
         <div className="mt-4">
           <label className="block text-gray-700">Confirm Password</label>
-          <input type="password" name="password2" onChange={handleOnChange} id placeholder="Retype Your Password" minLength={6} className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+          <input type="password" name="password2" onBlur={handleOnBlur} id placeholder="Retype Your Password" minLength={6} className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
           focus:bg-white focus:outline-none" required />
         </div>
         <div className="mt-4">

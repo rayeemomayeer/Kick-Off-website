@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import initializeFirebase from '../Components/Login/Firebase/firebase.init'
-import { getAuth, createUserWithEmailAndPassword,signOut,onAuthStateChanged,signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,signOut,onAuthStateChanged,signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider ,updateProfile } from "firebase/auth";
 
 initializeFirebase();
 const useFirebase = () => {
@@ -9,13 +9,26 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState('');
 
   const auth = getAuth(); 
-  const registerUser = (email, password) => {
+  const googleProvider = new GoogleAuthProvider();
+  const registerUser = (email, password, history, name) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
       setAuthError('')
+      const newUser = {email, displayName: name};
+      setUser(newUser)
+      updateProfile(auth.currentUser, {
+  displayName: name, photoURL: "https://www.csslight.com/application/upload/ProfilePhoto/default-image-01.png"
+}).then(() => {
+  // Profile updated!
+  // ...
+}).catch((error) => {
+  // An error occurred
+  // ...
+});
+      history.replace('/');
       // ...
     })
     .catch((error) => {
@@ -51,6 +64,20 @@ const useFirebase = () => {
       // An error happened.
     }).finally(()=>setIsLoading(false));
   } 
+  const signInWithGoogle = (location, history) => {
+    setIsLoading(true);
+    signInWithPopup(auth, googleProvider)
+  .then((result) => {
+    setAuthError('')
+    const user = result.user;
+    // ...
+  }).catch((error) => {
+    const errorMessage = error.message;
+    setAuthError(errorMessage)
+    // ...
+  }).finally(()=>setIsLoading(false));
+  }
+
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -69,7 +96,8 @@ return () => unsubscribe;
     logOut,
     loginUser,
     isLoading,
-    authError
+    authError,
+    signInWithGoogle
   }
 }
 
