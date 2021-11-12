@@ -10,11 +10,16 @@ import Home from './Components/Home/Home';
 import Products from './Components/Products/Products';
 import Navbar from './Components/Shared/Navbar/Navbar';
 import ProductDescription from './Components/ProductDescription/ProductDescription';
+import Login from './Components/Login/Login/Login';
+import Register from './Components/Login/Register/Register';
+import AuthProvider from './contexts/AuthProvider/AuthProvider';
+import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
     <div className="">
-      <Router>
+      <AuthProvider>
+        <Router>
         <Switch>
           <Route exact path="/">
             <Home/>
@@ -26,11 +31,20 @@ function App() {
             <Navbar></Navbar>
             <Products />
           </Route>
-          <Route path="/boot/:bootId">
-            <ProductDescription/>
+          <Route path="/login">
+            <Navbar/>
+            <Login />
           </Route>
+          <Route path="/register">
+            <Navbar/>
+            <Register />
+          </Route>
+          <PrivateRoute path="/boot/:bootId">
+            <ProductDescription/>
+          </PrivateRoute>
         </Switch>
       </Router>
+      </AuthProvider>
     </div>
   );
 }

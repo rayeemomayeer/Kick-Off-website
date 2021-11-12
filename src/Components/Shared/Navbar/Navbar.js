@@ -4,6 +4,8 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import bootLogo from './football-boots.png'
 import { Link } from 'react-router-dom'
+import useAuth from '../../../hooks/useAuth'
+
 
 const navigation = [
   { name: 'Home', to: '/home', current: true },
@@ -17,9 +19,10 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const {user, logOut} = useAuth()
   return (
     <div className="fixed">
-      <Disclosure as="nav" className="bg-opacity-10 bg-white w-screen">
+      <Disclosure as="nav" className="bg-white bg-opacity-10 w-screen">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -60,14 +63,13 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                {
+                  user?.email? <button onClick={logOut}  className="bg-blue-600 px-4 py-2 rounded-lg text-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white hover:font-bold">Logout</button> 
+                  : <Link to="/login"><button type="button" className="bg-blue-600 px-4 py-2 rounded-lg text-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white hover:font-bold"
+                >Login</button></Link>
 
+                }
+                
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
                   <div>
