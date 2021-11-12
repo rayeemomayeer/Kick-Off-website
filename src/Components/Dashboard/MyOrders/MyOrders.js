@@ -12,7 +12,7 @@ const MyOrders = () => {
     .then(data => setOrders(data))
   }, [])
   const handleDelete = id => {
-    if(window.confirm("Delete the item?")){
+    if(window.confirm("Are You Sure, You Want to Delete This Item ?")){
       const url = `http://localhost:5000/myOrders/${id}`;
     fetch(url, {
       method: 'DELETE'
