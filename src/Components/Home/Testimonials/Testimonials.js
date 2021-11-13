@@ -36,6 +36,7 @@ const Testimonials = () => {
                 </div>
                 <div className="flex-grow pl-3">
                   <h6 className="font-bold text-sm uppercase text-gray-600">{review.user.displayName}</h6>
+                  <h6 className="text-sm text-gray-500">{review.user.email}</h6>
                 </div>
               </div>
               <div className="w-full">
