@@ -53,12 +53,12 @@ export default function Navbar() {
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <Link to={item.to} className={classNames(
-                          item.current ? 'bg-green-500 text-white' : 'bg-yellow-400 bg-opacity-50 text-white',
+                          item.current ? 'bg-green-500 text-white' : 'bg-yellow-400 bg-opacity-75 text-white',
                           'px-3 py-2 rounded-md text-sm font-medium'
                         )}>{item.name}</Link>
                     ))}
                     {
-                  user?.email? <Link to="/dashboard"><button  className="bg-yellow-400 bg-opacity-50 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</button></Link> 
+                  user?.email? <Link to="/dashboard"><button  className="bg-yellow-400 bg-opacity-75 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</button></Link> 
                   : <span></span>
 
                 }

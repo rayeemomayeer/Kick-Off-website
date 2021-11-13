@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import initializeFirebase from '../Components/Login/Firebase/firebase.init'
-import { getAuth, createUserWithEmailAndPassword,signOut,onAuthStateChanged,signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider ,updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,signOut,onAuthStateChanged,signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider ,updateProfile,getIdToken } from "firebase/auth";
 import axios from 'axios';
 
 initializeFirebase();
@@ -8,6 +8,8 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState('');
+  const [admin, setAdmin] = useState(false)
+  const [token, setToken] = useState('')
 
   const auth = getAuth(); 
   const googleProvider = new GoogleAuthProvider();
@@ -93,11 +95,20 @@ const useFirebase = () => {
     // ...
   }).finally(()=>setIsLoading(false));
   }
+  useEffect(()=>{
+    fetch(`http://localhost:5000/users/${user.email}`)
+    .then(res=>res.json())
+    .then(data=> setAdmin(data.admin))
+  }, [user.email])
 
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, (user) => {
   if (user) {
     setUser(user);
+    getIdToken(user)
+    .then(idToken=>{
+      setToken(idToken)
+    })
   } else {
     setUser({});
   }
@@ -113,7 +124,9 @@ return () => unsubscribe;
     loginUser,
     isLoading,
     authError,
-    signInWithGoogle
+    signInWithGoogle,
+    admin,
+    token
   }
 }
 
