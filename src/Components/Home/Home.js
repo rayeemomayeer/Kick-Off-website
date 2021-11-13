@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Product from '../Products/Product/Product';
 import Navbar from '../Shared/Navbar/Navbar';
+import Testimonials from './Testimonials/Testimonials';
 import TopBanner from './TopBanner/TopBanner';
 
 const Home = () => {
@@ -30,6 +31,7 @@ const Home = () => {
             </Link>
         </div>
       </div>
+        <Testimonials></Testimonials>      
     </div>
   );
 };

@@ -27,6 +27,7 @@ import {
 import useAuth from '../../hooks/useAuth';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import AdminRoute from '../Login/AdminRoute/AdminRoute';
+import Review from './Review/Review';
 
 const drawerWidth = 240;
 
@@ -46,7 +47,7 @@ function Dashboard(props) {
       <Divider />
       <div className="text-start pl-4">
         {
-          !admin && <div><Link to={`${url}/myOrders`} className="text-xl text-green-800 block pb-5 pt-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline pr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          !admin && <div><Link to={`${url}/myOrders`} className="text-xl text-green-800 block py-5"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline pr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
 </svg>My Orders</Link>
       <Link to={`${url}/pay`} className="text-xl text-green-800 block pb-5"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline pr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -54,10 +55,11 @@ function Dashboard(props) {
 </svg>Pay</Link>
       <Link to={`${url}/review`} className="text-xl text-green-800 block pb-5"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline pr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-</svg>Review</Link></div>
+</svg>Review</Link><Divider /></div>
+
         }
       {
-        admin && <div><Link to={`${url}/manageOrders`} className="text-xl text-green-800 block pb-5"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline pr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        admin && <div><Link to={`${url}/manageOrders`} className="text-xl text-green-800 block py-5"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline pr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
 </svg>Manage All Orders</Link>
       <Link to={`${url}/addProduct`} className="text-xl text-green-800 block pb-5"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline pr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -153,6 +155,9 @@ function Dashboard(props) {
         </Route>
         <Route path={`${path}/pay`}>
           <h1 className="text-5xl text-center">Payment system coming soon.</h1>
+        </Route>
+        <Route path={`${path}/review`}>
+          <Review/>
         </Route>
         <AdminRoute path={`${path}/makeAdmin`}>
           <MakeAdmin></MakeAdmin>

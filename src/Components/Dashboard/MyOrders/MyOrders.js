@@ -8,13 +8,13 @@ const MyOrders = () => {
   useEffect(()=>{
     const url = `http://localhost:5000/myOrders?email=${user.email}`
     fetch(url, {
-      headers: {
-        'authorization': `Bearer ${token}`
-      }
-    })
-    .then(res=>res.json())
-    .then(data => setOrders(data))
-  }, [])
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setOrders(data));
+    }, [user.email, token])
   const handleDelete = id => {
     if(window.confirm("Are You Sure, You Want to Delete This Item ?")){
       const url = `http://localhost:5000/myOrders/${id}`;
