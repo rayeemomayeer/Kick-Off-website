@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useAuth from './../../hooks/useAuth'
+import useAuth from './../../hooks/useAuth';
   
 const ProductDescription = () => {
   const {bootId} = useParams();
@@ -36,7 +36,7 @@ const ProductDescription = () => {
     } 
 
     delete details._id
-    axios.post('http://localhost:5000/myOrders',order)
+    axios.post('https://whispering-island-81161.herokuapp.com/myOrders',order)
     .then(res=>{
       if(res.data.insertedId){
         toast.success('Added in to the My Orders', {

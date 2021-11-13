@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import useAuth from '../../../hooks/useFirebase'
+import useAuth from '../../../hooks/useFirebase';
 
 const MakeAdmin = () => {
   const [email, setEmail] = useState('')
@@ -11,7 +11,7 @@ const MakeAdmin = () => {
   }
   const handleAdminSubmit = e => {
     const user = {email};
-    fetch('http://localhost:5000/users/admin', {
+    fetch('https://whispering-island-81161.herokuapp.com/users/admin', {
       method: 'PUT',
       headers: {
         'authorization': `Bearer ${token}`,

@@ -1,7 +1,6 @@
+import { createUserWithEmailAndPassword, getAuth, getIdToken, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from 'react';
-import initializeFirebase from '../Components/Login/Firebase/firebase.init'
-import { getAuth, createUserWithEmailAndPassword,signOut,onAuthStateChanged,signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider ,updateProfile,getIdToken } from "firebase/auth";
-import axios from 'axios';
+import initializeFirebase from '../Components/Login/Firebase/firebase.init';
 
 initializeFirebase();
 const useFirebase = () => {
@@ -70,7 +69,7 @@ const useFirebase = () => {
   } 
   const saveUser = (email, displayName, method) => {
     const user = {email, displayName}
-    fetch('http://localhost:5000/users', {
+    fetch('https://whispering-island-81161.herokuapp.com/users', {
       method: method,
       headers: {
         'content-type': 'application/json'
@@ -96,7 +95,7 @@ const useFirebase = () => {
   }).finally(()=>setIsLoading(false));
   }
   useEffect(()=>{
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://whispering-island-81161.herokuapp.com/users/${user.email}`)
     .then(res=>res.json())
     .then(data=> setAdmin(data.admin))
   }, [user.email])

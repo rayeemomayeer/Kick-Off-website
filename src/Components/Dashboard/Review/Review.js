@@ -21,7 +21,7 @@ const Review = () => {
       user
     } 
 
-    axios.post('http://localhost:5000/reviews',comReview)
+    axios.post('https://whispering-island-81161.herokuapp.com/reviews',comReview)
     .then(res=>{
       if(res.data.insertedId){
         toast.success('Review Added Successfully', {

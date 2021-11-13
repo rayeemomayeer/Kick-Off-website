@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import useAuth from '../../../hooks/useAuth'
+import useAuth from '../../../hooks/useAuth';
 
 const MyOrders = () => {
   const {user, token} = useAuth();
   const [orders, setOrders] = useState([]);
   useEffect(()=>{
-    const url = `http://localhost:5000/myOrders?email=${user.email}`
+    const url = `https://whispering-island-81161.herokuapp.com/myOrders?email=${user.email}`
     fetch(url, {
             headers: {
                 'authorization': `Bearer ${token}`
@@ -17,7 +17,7 @@ const MyOrders = () => {
     }, [user.email, token])
   const handleDelete = id => {
     if(window.confirm("Are You Sure, You Want to Delete This Item ?")){
-      const url = `http://localhost:5000/myOrders/${id}`;
+      const url = `https://whispering-island-81161.herokuapp.com/myOrders/${id}`;
     fetch(url, {
       method: 'DELETE'
     }).then(res=>res.json())
