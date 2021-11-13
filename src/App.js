@@ -15,6 +15,7 @@ import Register from './Components/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
 import Dashboard from './Components/Dashboard/Dashboard';
+import Footer from './Components/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -31,14 +32,17 @@ function App() {
           <Route path="/explore">
             <Navbar></Navbar>
             <Products />
+            <Footer/>
           </Route>
           <Route path="/login">
             <Navbar/>
             <Login />
+            <Footer/>
           </Route>
           <Route path="/register">
             <Navbar/>
             <Register />
+            <Footer/>
           </Route>
           <PrivateRoute path="/boot/:bootId">
             <ProductDescription/>
