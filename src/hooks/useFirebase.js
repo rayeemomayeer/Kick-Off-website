@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import initializeFirebase from '../Components/Login/Firebase/firebase.init'
 import { getAuth, createUserWithEmailAndPassword,signOut,onAuthStateChanged,signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider ,updateProfile } from "firebase/auth";
+import axios from 'axios';
 
 initializeFirebase();
 const useFirebase = () => {
@@ -19,8 +20,9 @@ const useFirebase = () => {
       setAuthError('')
       const newUser = {email, displayName: name};
       setUser(newUser)
+      saveUser(email, name, 'POST')
       updateProfile(auth.currentUser, {
-  displayName: name, photoURL: "https://www.csslight.com/application/upload/ProfilePhoto/default-image-01.png"
+  displayName: name
 }).then(() => {
   // Profile updated!
   // ...
@@ -43,10 +45,10 @@ const useFirebase = () => {
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
-      const destination = location?.state?.from || '/';
-      history.replace(destination)
       const user = userCredential.user;
       setAuthError('')
+      const destination = location?.state?.from || '/';
+      history.replace(destination)
       // ...
     })
     .catch((error) => {
@@ -64,12 +66,26 @@ const useFirebase = () => {
       // An error happened.
     }).finally(()=>setIsLoading(false));
   } 
+  const saveUser = (email, displayName, method) => {
+    const user = {email, displayName}
+    fetch('http://localhost:5000/users', {
+      method: method,
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    .then()
+  }
   const signInWithGoogle = (location, history) => {
     setIsLoading(true);
     signInWithPopup(auth, googleProvider)
   .then((result) => {
     setAuthError('')
     const user = result.user;
+    saveUser(user.email, user.displayName, 'PUT')
+    const destination = location?.state?.from || '/';
+      history.replace(destination)
     // ...
   }).catch((error) => {
     const errorMessage = error.message;
