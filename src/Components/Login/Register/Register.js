@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { Link,useHistory,useLocation } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
+import React, { useState } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -41,7 +37,7 @@ const Register = () => {
       
       {/* component */}
 <section className="flex bg-white rounded-2xl shadow-2xl overflow-hidden mx-auto ">
-  <div class="hidden lg:block lg:w-1/2 bg-cover"><img src="https://source.unsplash.com/1600x900/?football,soccer,football-boots" alt className="w-full h-full object-cover filter brightness-50" /></div>
+  <div className="hidden lg:block lg:w-1/2 bg-cover"><img src="https://source.unsplash.com/1600x900/?football,soccer,football-boots" alt className="w-full h-full object-cover filter brightness-50" /></div>
   {
     isLoading && <CircularProgress />
   }

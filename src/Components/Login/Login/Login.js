@@ -1,6 +1,6 @@
 import { Alert, CircularProgress } from '@mui/material';
 import React, { useState } from 'react';
-import { Link,useLocation,useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
@@ -28,7 +28,7 @@ const Login = () => {
       
       {/* component */}
 <section className="flex bg-white rounded-2xl shadow-2xl overflow-hidden mx-auto ">
-  <div class="hidden lg:block lg:w-1/2 bg-cover"><img src="https://source.unsplash.com/1600x900/?football,soccer,football-boots" alt className="w-full h-full object-cover filter brightness-50" /></div>
+  <div className="hidden lg:block lg:w-1/2 bg-cover"><img src="https://source.unsplash.com/1600x900/?football,soccer,football-boots" alt className="w-full h-full object-cover filter brightness-50" /></div>
   <div className="bg-white md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 w-full p-8 lg:w-1/2
   flex items-center justify-center">
     <div className="w-full h-100">

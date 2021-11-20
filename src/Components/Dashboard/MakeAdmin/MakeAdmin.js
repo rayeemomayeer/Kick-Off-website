@@ -49,19 +49,19 @@ pauseOnFocusLoss={false}
 draggable
 pauseOnHover={false}
 />
-      <form onSubmit={handleAdminSubmit} class="grid h-screen bg-gray-900 place-content-center">
+      <form onSubmit={handleAdminSubmit} className="grid h-screen bg-gray-900 place-content-center">
               
       <h1 className="text-5xl text-green-700 text-center pb-5">Make an Admin</h1>  
-    <div class="flex items-center max-w-md mx-auto bg-white rounded-full ">
-        <div class="w-full">
+    <div className="flex items-center max-w-md mx-auto bg-white rounded-full ">
+        <div className="w-full">
           
-            <input onBlur={handleOnBlur} type="email" class="w-full px-4 py-1 text-gray-900 rounded-full focus:outline-none"
+            <input onBlur={handleOnBlur} type="email" className="w-full px-4 py-1 text-gray-900 rounded-full focus:outline-none"
                 placeholder="enter user email" />
         </div>
         <div>
-            <button type="submit" class="flex items-center justify-center w-12 h-12 text-gray-100 rounded-full"
+            <button type="submit" className="flex items-center justify-center w-12 h-12 text-gray-100 rounded-full"
         >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
             </button>
