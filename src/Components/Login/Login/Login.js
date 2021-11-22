@@ -1,16 +1,27 @@
 import { Alert, CircularProgress } from '@mui/material';
 import React, { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import swal from 'sweetalert';
 import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
   const [loginData, setLoginData] = useState({})
-  const {user,loginUser , isLoading,authError, signInWithGoogle, signInWithGithub} = useAuth();
+  const {user,loginUser , isLoading,authError, signInWithGoogle, signInWithGithub, handleResetPassword} = useAuth();
   const location = useLocation()
   const history = useHistory();
   const  handleGoogleSignIn = () => {
     signInWithGoogle(location, history);
   }
+  const ResetPassword = () => {
+    swal({
+    title: "Reset Password !",
+    text: `an email has been send to ${loginData.email}, reset your password by clicking the link`,
+    icon: "info",
+    button: "ok",
+  });
+  handleResetPassword(loginData.email);
+  }
+  
   const  handleGithubSignIn = () => {
     signInWithGithub(location, history);
   }
@@ -49,6 +60,8 @@ const Login = () => {
           <input type="password" name="password" onChange={handleOnChange} placeholder="Enter Password" minLength={6} className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
           focus:bg-white focus:outline-none" required autoComplete="none" />
         </div>
+        <button onClick={ResetPassword} className="mt-2"><span className="text-blue-500 hover:text-blue-700  font-base">Forgot Password?</span></button>
+
         <div className="mt-4">
           {authError && <Alert severity="error">{authError}</Alert>}
         </div>

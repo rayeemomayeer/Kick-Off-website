@@ -2,6 +2,7 @@ import MuiAlert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
 import React, { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import swal from 'sweetalert';
 import useAuth from '../../../hooks/useAuth';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -32,6 +33,12 @@ const Register = () => {
       e.preventDefault();
       return
     }
+    swal({
+    title: "Verify Email !",
+    text: `an email has been send to ${loginData.email}, please verify your email`,
+    icon: "info",
+    button: "ok",
+  });
     registerUser(loginData.email, loginData.password,loginData.name, history)
     e.preventDefault();
   }
@@ -72,6 +79,7 @@ const Register = () => {
         <div className="mt-4">
           {authError && <Alert severity="error">{authError}</Alert>}
         </div>
+        {user?.email && <Alert severity="success" className="mt-3">User Created Successfully</Alert>}
         <button type="submit" className="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
         px-4 py-3 mt-6">Register</button>
 
@@ -107,7 +115,7 @@ const Register = () => {
 
 
       <Link to="/login"><button className="mt-8">Already Register? <span className="text-blue-500 hover:text-blue-700 font-semibold">Please Login</span></button></Link>
-      {user?.email && <Alert severity="success" className="mt-3">User Created Successfully</Alert>}
+      
     </div>
   </div>}
   

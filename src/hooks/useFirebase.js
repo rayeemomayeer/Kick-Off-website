@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, getIdToken, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, GithubAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, getIdToken, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import initializeFirebase from '../Components/Login/Firebase/firebase.init';
 
@@ -22,6 +22,7 @@ const useFirebase = () => {
       setAuthError('')
       const newUser = {email, displayName: name};
       setUser(newUser)
+      verifyEmail()
       const profileImg = 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png';
       saveUser(email, name, profileImg, 'POST')
       updateProfile(auth.currentUser, {
@@ -114,6 +115,24 @@ const useFirebase = () => {
       }).finally(()=>setIsLoading(false));
   }
 
+  const verifyEmail = () => {
+    sendEmailVerification(auth.currentUser)
+      .then(result => {
+        console.log(result)
+      })
+  }
+
+  const handleResetPassword = (email) => {
+    sendPasswordResetEmail(auth, email)
+    .then(() => {
+      setAuthError('')
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      setAuthError(errorMessage)
+    });
+  }
+
   useEffect(()=>{
     fetch(`https://whispering-island-81161.herokuapp.com/users/${user.email}`)
     .then(res=>res.json())
@@ -145,6 +164,7 @@ return () => unsubscribe;
     authError,
     signInWithGoogle,
     signInWithGithub,
+    handleResetPassword,
     admin,
     token
   }
