@@ -22,11 +22,11 @@ const Home = () => {
       <h1 className="title-font sm:text-5xl text-3xl mb-16 text-gray-900 text-center" style={{fontFamily: "Montserrat, sans-serif"}}>Products</h1>
           <div className="mt-6 grid grid-cols-1 gap-y-16 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {
-              products.slice(0,4).map(tour => <Product key={tour.id} tour={tour}></Product>)
+              products.slice(0,8).map(tour => <Product key={tour.id} tour={tour}></Product>)
             }
           </div>
         </div>
-        <div className="text-center mx-auto">
+        <div className="text-center mx-auto mb-16">
           <Link to="/explore" className="kick--btn items-center text-center mx-auto">
                   Explore more
             </Link>

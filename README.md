@@ -1,6 +1,6 @@
 # Dreamy Travels
 
-this website based on football boots shopping
+This is a Football boots shop based website
 
 ### `Live Site Link`
 

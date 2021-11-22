@@ -92,7 +92,7 @@ const CheckoutForm = ({ user, price }) => {
                         },
                     }}
                 />
-                {processing ? <CircularProgress></CircularProgress> : <button type="submit" disabled={!stripe || success}>
+                {processing ? <CircularProgress></CircularProgress> : <button type="submit" className="bg-gray-600 text-white rounded-lg p-2 m-2" disabled={!stripe || success}>
                     Pay $ {price}
                 </button>}
             </form>
