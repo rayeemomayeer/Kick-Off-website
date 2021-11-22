@@ -104,7 +104,7 @@ pauseOnHover={false}
                                 {order.details.rating} rating
                               </p>
                               <div className="flex">
-                                <button type="button" onClick={()=> handleDelete(order._id)} className="font-medium text-red-600 hover:text-red-700">Remove</button>
+                                <button type="button" onClick={()=> handleDelete(order._id)} className="font-medium bg-red-100 rounded-lg p-1 px-2 text-red-600 hover:text-red-700">Remove</button>
                               </div>
                             </div>
                           </div>

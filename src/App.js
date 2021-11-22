@@ -16,6 +16,7 @@ import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Footer from './Components/Shared/Footer/Footer';
+import NotFound from './Components/NotFound/NotFound';
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
             <Login />
             <Footer/>
           </Route>
-          <Route path="/register">
+                    <Route path="/register">
             <Navbar/>
             <Register />
             <Footer/>
@@ -50,6 +51,9 @@ function App() {
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
+          <Route exact path="*">
+            <NotFound></NotFound>
+          </Route>
         </Switch>
       </Router>
       </AuthProvider>

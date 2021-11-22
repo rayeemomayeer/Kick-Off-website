@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, getIdToken, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, getIdToken, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, GithubAuthProvider } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import initializeFirebase from '../Components/Login/Firebase/firebase.init';
 
@@ -12,6 +12,7 @@ const useFirebase = () => {
 
   const auth = getAuth(); 
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   const registerUser = (email, password, history, name) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
@@ -21,7 +22,8 @@ const useFirebase = () => {
       setAuthError('')
       const newUser = {email, displayName: name};
       setUser(newUser)
-      saveUser(email, name, 'POST')
+      const profileImg = 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png';
+      saveUser(email, name, profileImg, 'POST')
       updateProfile(auth.currentUser, {
   displayName: name
 }).then(() => {
@@ -67,8 +69,8 @@ const useFirebase = () => {
       // An error happened.
     }).finally(()=>setIsLoading(false));
   } 
-  const saveUser = (email, displayName, method) => {
-    const user = {email, displayName}
+  const saveUser = (email, displayName,profileImg, method) => {
+    const user = {email, displayName, profileImg}
     fetch('https://whispering-island-81161.herokuapp.com/users', {
       method: method,
       headers: {
@@ -81,19 +83,37 @@ const useFirebase = () => {
   const signInWithGoogle = (location, history) => {
     setIsLoading(true);
     signInWithPopup(auth, googleProvider)
-  .then((result) => {
-    setAuthError('')
-    const user = result.user;
-    saveUser(user.email, user.displayName, 'PUT')
-    const destination = location?.state?.from || '/';
-      history.replace(destination)
-    // ...
-  }).catch((error) => {
-    const errorMessage = error.message;
-    setAuthError(errorMessage)
-    // ...
-  }).finally(()=>setIsLoading(false));
+      .then((result) => {
+        setAuthError('')
+        const user = result.user;
+        saveUser(user.email, user.displayName, user.photoURL, 'PUT')
+        const destination = location?.state?.from || '/';
+          history.replace(destination)
+        // ...
+      }).catch((error) => {
+        const errorMessage = error.message;
+        setAuthError(errorMessage)
+        // ...
+      }).finally(()=>setIsLoading(false));
   }
+
+  const signInWithGithub = (location, history) => {
+    setIsLoading(true);
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        setAuthError('')
+        const user = result.user;
+        saveUser(user.email, user.displayName, user.photoURL, 'PUT')
+        const destination = location?.state?.from || '/';
+          history.replace(destination)
+        // ...
+      }).catch((error) => {
+        const errorMessage = error.message;
+        setAuthError(errorMessage)
+        // ...
+      }).finally(()=>setIsLoading(false));
+  }
+
   useEffect(()=>{
     fetch(`https://whispering-island-81161.herokuapp.com/users/${user.email}`)
     .then(res=>res.json())
@@ -124,6 +144,7 @@ return () => unsubscribe;
     isLoading,
     authError,
     signInWithGoogle,
+    signInWithGithub,
     admin,
     token
   }

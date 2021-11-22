@@ -32,6 +32,7 @@ const ProductDescription = () => {
   const onSubmit = (e) => {
     const order = {
       ...orderInfo,
+      photoURL: user?.photoURL,
       details,
     } 
 
@@ -112,7 +113,7 @@ progress: undefined,
         </h2>
         <div className="max-w-sm mx-auto md:w-2/3">
           <div className=" relative ">
-            <input required="required" onBlur={handleOnBlur} type="text" name="email" id="user-info-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" defaultValue={user?.email} />
+            <input required="required" onChange={handleOnBlur} type="text" name="email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" autoComplete="none" defaultValue={user?.email} />
           </div>
         </div>
       </div>
@@ -124,17 +125,17 @@ progress: undefined,
         <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
           <div>
             <div className=" relative ">
-              <input onBlur={handleOnBlur} required="required" type="text" name="userName" id="user-info-name" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" defaultValue={user?.displayName} />
+              <input onChange={handleOnBlur} required="required" type="text" name="userName" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" autoComplete="none" defaultValue={user?.displayName} />
             </div>
           </div>
           <div>
             <div className=" relative ">
-              <input onBlur={handleOnBlur} required="required" type="text" name="phone" id="user-info-phone" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Phone number" />
+              <input onChange={handleOnBlur} required="required" type="text" name="phone" id="user-info-phone" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" autoComplete="none" placeholder="Phone number" />
             </div>
           </div>
           <div>
             <div className=" relative ">
-              <input onBlur={handleOnBlur} required="required" type="text" name="address" id="user-info-address" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Current Address" />
+              <input onChange={handleOnBlur} required="required" type="text" name="address" id="user-info-address" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" autoComplete="none" placeholder="Current Address" />
             </div>
           </div>
         </div>

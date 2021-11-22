@@ -73,7 +73,7 @@ const AddProduct = () => {
 </svg>
                                    </span>
 								</div>
-								<input type="text" onChange={handleOnBlur} class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" name="image" placeholder="product image url" />
+								<input required="required" type="text" onChange={handleOnBlur} class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" name="image" placeholder="product image url" />
                   </div>
 							</div>
 							<div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
