@@ -18,8 +18,16 @@ const AddProduct = () => {
     setDetails(newInfo);
   }
 	const onSubmit = (e) =>{
+		const extraInfo = {
+			...details, 
+			rating: 0, 
+			reviews: 0,
+			facebook: "https://www.facebook.com/",
+    	witter: "https://twitter.com/home",
+    	messenger: "https://www.messenger.com",
+		}
 		e.preventDefault();
-		axios.post('http://localhost:5000/products',details)
+		axios.post('http://localhost:5000/products',extraInfo)
     .then(res=>{
       if(res.data.insertedId){
         toast.success('Product added Successfully', {

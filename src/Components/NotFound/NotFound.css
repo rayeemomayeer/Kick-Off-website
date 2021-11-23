@@ -1,0 +1,5 @@
+.error-bg{
+  background-image: url('https://source.unsplash.com/1600x1000/?football,soccer,football-boots');
+  -webkit-filter: brightness(0.5);
+filter: brightness(0.6);
+}
