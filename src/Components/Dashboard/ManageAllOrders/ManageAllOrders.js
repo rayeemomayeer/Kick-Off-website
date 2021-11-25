@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import useAuth from '../../../hooks/useAuth';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import {
     Link
 } from "react-router-dom";
@@ -27,7 +22,7 @@ const ManageAllOrders = () => {
             .then(data => setOrders(data));
     }, [user.email, token])
 
-  const handleApprovedAction = (id,userName) => {
+  const handleApprovedAction = (id,userName, userEmail, productName) => {
     const statue = {
       statue: 'Approved',
     }
@@ -51,6 +46,7 @@ const ManageAllOrders = () => {
         draggable: true,
         progress: undefined,
         });
+        
     })
   }
 
@@ -191,7 +187,7 @@ const ManageAllOrders = () => {
                               </p>}
                               <div className="flex">
                                 <button type="button" onClick={()=> handlePendingAction(order._id,order.userName)} className="font-bold text-yellow-600 hover:text-yellow-700 rounded-lg bg-yellow-100 p-2 font-mono">Pending</button>
-                                <button type="button" onClick={()=> handleApprovedAction(order._id,order.userName)} className="font-bold text-green-600 hover:text-green-700 rounded-lg bg-green-100 p-2 font-mono mx-3">Approved</button>
+                                <button type="button" onClick={()=> handleApprovedAction(order._id,order.userName,order.email, order.details.name)} className="font-bold text-green-600 hover:text-green-700 rounded-lg bg-green-100 p-2 font-mono mx-3">Approved</button>
                                 <button type="button" onClick={()=> handleCancelAction(order._id,order.userName)} className="font-bold text-red-600 hover:text-red-700 rounded-lg bg-red-100 p-2 font-mono">Cancel</button>
                                 </div>
                             </div>

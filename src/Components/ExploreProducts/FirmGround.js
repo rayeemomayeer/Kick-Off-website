@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Product from './Product/Product';
+import Product from '../Products/Product/Product';
 
-const Products = () => {
+const FirmGround = () => {
   const [products, setProducts] = useState([]);
   useEffect(()=>{
-    fetch('http://localhost:5000/allProducts')
+    fetch('http://localhost:5000/products?surface=firm_ground')
       .then(response => response.json())
       .then(data => setProducts(data))
   }, []);
@@ -15,7 +15,7 @@ const Products = () => {
       
       <h1 className="title-font sm:text-5xl text-3xl mb-16 text-gray-900 text-left" style={{fontFamily: "Montserrat, sans-serif"}}>Products <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-</svg> <span className="text-gray-600 text-3xl">All Boots</span></h1>
+</svg> <span className="text-gray-600 text-3xl">Firm Ground</span></h1>
 
       <div className="mt-6 grid grid-cols-1 gap-y-16 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {
@@ -28,4 +28,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default FirmGround;

@@ -4,7 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(()=>{
-    fetch('http://localhost:5000/products')
+    fetch('http://localhost:5000/allProducts')
       .then(response => response.json())
       .then(data => setProducts(data))
   }, []);

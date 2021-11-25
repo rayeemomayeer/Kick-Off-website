@@ -69,7 +69,12 @@ const AddProduct = () => {
 						</div>
             <div class="mb-3 space-y-2 w-full text-xs">
 								<label class="font-light text-gray-600 py-2 text-lg">Product  Price <abbr title="required">*</abbr></label>
-								<input onChange={handleOnBlur} placeholder="Product Price" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="price" id="integration_shop_name" />
+								<input onChange={handleOnBlur} placeholder="Product Price" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 mb-5" required="required" type="text" name="price" id="integration_shop_name" />
+								<p class="text-red text-xs hidden">Please fill out this field.</p>
+							</div>
+            <div class="my-3 space-y-2 w-full text-xs">
+								<label class="font-light text-gray-600 py-2 pt-3 text-lg">Product  Category <abbr title="required">*</abbr></label>
+								<input onChange={handleOnBlur} placeholder="Product Category" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="category" id="integration_shop_name" />
 								<p class="text-red text-xs hidden">Please fill out this field.</p>
 							</div>
 						<div class="mb-3 space-y-2 w-full text-xs">

@@ -17,6 +17,7 @@ import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Footer from './Components/Shared/Footer/Footer';
 import NotFound from './Components/NotFound/NotFound';
+import ExploreProducts from './Components/ExploreProducts/ExploreProducts';
 
 function App() {
   return (
@@ -32,7 +33,8 @@ function App() {
           </Route>
           <Route path="/explore">
             <Navbar></Navbar>
-            <Products />
+            {/* <Products /> */}
+            <ExploreProducts/>
             <Footer/>
           </Route>
           <Route path="/login">
