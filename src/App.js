@@ -18,6 +18,8 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Footer from './Components/Shared/Footer/Footer';
 import NotFound from './Components/NotFound/NotFound';
 import ExploreProducts from './Components/ExploreProducts/ExploreProducts';
+import AdminRoute from './Components/Login/AdminRoute/AdminRoute';
+import EditProduct from './Components/Dashboard/EditProduct/EditProduct';
 
 function App() {
   return (
@@ -50,6 +52,9 @@ function App() {
           <PrivateRoute path="/boot/:bootId">
             <ProductDescription/>
           </PrivateRoute>
+          <AdminRoute path="/edit/:bootId">
+            <EditProduct/>
+          </AdminRoute>
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>

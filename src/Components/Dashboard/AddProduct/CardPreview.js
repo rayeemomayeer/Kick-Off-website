@@ -10,7 +10,7 @@ const CardPreview = ({details}) => {
         </div>
 
         <div className="w-56 -mt-5 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
-            <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">{name.slice(0,20)}...</h3>
+            <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">{name?.slice(0,20)}...</h3>
             
             <div className="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
                 <span className="font-bold text-gray-800 dark:text-gray-200">$ {price}</span>
