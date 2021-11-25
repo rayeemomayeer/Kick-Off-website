@@ -10,7 +10,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 const Register = () => {
-  const {user,registerUser , isLoading,authError,signInWithGoogle, signInWithGithub} = useAuth();
+  const {user,registerUser , isLoading,authError,signInWithGoogle, signInWithGithub,signInWithFacebook} = useAuth();
   const [loginData, setLoginData] = useState({})
   const history = useHistory();
   const location = useLocation()
@@ -19,6 +19,9 @@ const Register = () => {
   }
   const  handleGithubSignIn = () => {
     signInWithGithub(location, history);
+  }
+  const  handleFacebookSignIn = () => {
+    signInWithFacebook(location, history);
   }
   const handleOnBlur = e => {
     const field = e.target.name;
@@ -97,7 +100,7 @@ const Register = () => {
       </button>   
 
       <div className="flex flex-col md:flex-row md:mt-2 mt-2">
-          <button type="button" onClick={handleGoogleSignIn} className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300">
+          <button type="button" onClick={handleFacebookSignIn} className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300">
           <div className="flex items-center justify-center">
             <i class="fab fa-facebook text-blue-600 text-2xl"></i>
             <span className="ml-2">

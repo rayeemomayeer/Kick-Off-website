@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, getIdToken, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, getIdToken, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import initializeFirebase from '../Components/Login/Firebase/firebase.init';
 
@@ -13,6 +13,8 @@ const useFirebase = () => {
   const auth = getAuth(); 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
+
   const registerUser = (email, password, history, name) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
@@ -115,6 +117,23 @@ const useFirebase = () => {
       }).finally(()=>setIsLoading(false));
   }
 
+  const signInWithFacebook = (location, history) => {
+    setIsLoading(true);
+    signInWithPopup(auth, facebookProvider)
+      .then((result) => {
+        setAuthError('')
+        const user = result.user;
+        saveUser(user.email, user.displayName, user.photoURL, 'PUT')
+        const destination = location?.state?.from || '/';
+          history.replace(destination)
+        // ...
+      }).catch((error) => {
+        const errorMessage = error.message;
+        setAuthError(errorMessage)
+        // ...
+      }).finally(()=>setIsLoading(false));
+  }
+
   const verifyEmail = () => {
     sendEmailVerification(auth.currentUser)
       .then(result => {
@@ -164,6 +183,7 @@ return () => unsubscribe;
     authError,
     signInWithGoogle,
     signInWithGithub,
+    signInWithFacebook,
     handleResetPassword,
     admin,
     token

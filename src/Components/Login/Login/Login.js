@@ -6,7 +6,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
   const [loginData, setLoginData] = useState({})
-  const {user,loginUser , isLoading,authError, signInWithGoogle, signInWithGithub, handleResetPassword} = useAuth();
+  const {user,loginUser , isLoading,authError, signInWithGoogle, signInWithGithub, handleResetPassword, signInWithFacebook} = useAuth();
   const location = useLocation()
   const history = useHistory();
   const  handleGoogleSignIn = () => {
@@ -24,6 +24,10 @@ const Login = () => {
   
   const  handleGithubSignIn = () => {
     signInWithGithub(location, history);
+  }
+
+  const  handleFacebookSignIn = () => {
+    signInWithFacebook(location, history);
   }
   const handleOnChange = e => {
     const field = e.target.name;
@@ -82,7 +86,7 @@ const Login = () => {
       </button>   
 
       <div className="flex flex-col md:flex-row md:mt-2 mt-2">
-          <button type="button" onClick={handleGoogleSignIn} className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300">
+          <button type="button" onClick={handleFacebookSignIn} className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300">
           <div className="flex items-center justify-center">
             <i class="fab fa-facebook text-blue-600 text-2xl"></i>
             <span className="ml-2">
