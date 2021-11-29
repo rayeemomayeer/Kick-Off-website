@@ -4,7 +4,7 @@ import Product from '../Products/Product/Product';
 const ArtificialGrass = () => {
   const [products, setProducts] = useState([]);
   useEffect(()=>{
-    fetch('http://localhost:5000/products?surface=artificial_grass')
+    fetch('https://safe-beyond-59939.herokuapp.com/products?surface=artificial_grass')
       .then(response => response.json())
       .then(data => setProducts(data))
   }, []);

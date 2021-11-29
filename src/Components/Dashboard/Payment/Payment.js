@@ -12,7 +12,7 @@ const Payment = () => {
   const [orders, setOrders] = useState([]);
   
   useEffect(()=>{
-    const url = `https://whispering-island-81161.herokuapp.com/myOrders?email=${user.email}`
+    const url = `https://safe-beyond-59939.herokuapp.com/myOrders?email=${user.email}`
     fetch(url, {
             headers: {
                 'authorization': `Bearer ${token}`

@@ -1,7 +1,6 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import CardDetailsPreview from '../AddProduct/CardDetailsPreview';
 import CardPreview from '../AddProduct/CardPreview';
 
@@ -9,7 +8,7 @@ const EditProduct = () => {
   const {bootId} = useParams();
   const [details, setDetails] = useState({})
   useEffect(() => {
-    fetch('https://whispering-island-81161.herokuapp.com/products')
+    fetch('https://safe-beyond-59939.herokuapp.com/products')
       .then(res=>res.json())
       .then(data=>{
     const p=data.find(p=>p._id==bootId)
@@ -29,7 +28,7 @@ const EditProduct = () => {
 		
 		e.preventDefault();
     
-		// axios.put(`http://localhost:5000/products/${bootId}`,details)
+		// axios.put(`https://safe-beyond-59939.herokuapp.com/products/${bootId}`,details)
     // .then(res=>{
     //   toast.success('Product updated Successfully', {
 		// 			position: "top-right",

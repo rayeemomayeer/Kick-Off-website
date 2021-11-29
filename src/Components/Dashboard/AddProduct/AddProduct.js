@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import ProductDescription from '../../ProductDescription/ProductDescription';
 import CardDetailsPreview from './CardDetailsPreview';
 import CardPreview from './CardPreview';
 
@@ -27,7 +26,7 @@ const AddProduct = () => {
     	messenger: "https://www.messenger.com",
 		}
 		e.preventDefault();
-		axios.post('http://localhost:5000/products',extraInfo)
+		axios.post('https://safe-beyond-59939.herokuapp.com/products',extraInfo)
     .then(res=>{
       if(res.data.insertedId){
         toast.success('Product added Successfully', {

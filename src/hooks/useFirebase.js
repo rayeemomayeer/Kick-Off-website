@@ -74,7 +74,7 @@ const useFirebase = () => {
   } 
   const saveUser = (email, displayName,profileImg, method) => {
     const user = {email, displayName, profileImg}
-    fetch('https://whispering-island-81161.herokuapp.com/users', {
+    fetch('https://safe-beyond-59939.herokuapp.com/users', {
       method: method,
       headers: {
         'content-type': 'application/json'
@@ -153,7 +153,7 @@ const useFirebase = () => {
   }
 
   useEffect(()=>{
-    fetch(`https://whispering-island-81161.herokuapp.com/users/${user.email}`)
+    fetch(`https://safe-beyond-59939.herokuapp.com/users/${user.email}`)
     .then(res=>res.json())
     .then(data=> setAdmin(data.admin))
   }, [user.email])

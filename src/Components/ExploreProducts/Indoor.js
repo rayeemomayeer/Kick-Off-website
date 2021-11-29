@@ -4,7 +4,7 @@ import Product from '../Products/Product/Product';
 const Indoor = () => {
   const [products, setProducts] = useState([]);
   useEffect(()=>{
-    fetch('http://localhost:5000/products?surface=indoor')
+    fetch('https://safe-beyond-59939.herokuapp.com/products?surface=indoor')
       .then(response => response.json())
       .then(data => setProducts(data))
   }, []);

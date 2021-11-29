@@ -5,14 +5,14 @@ import { toast, ToastContainer } from 'react-toastify';
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(()=>{
-    fetch('http://localhost:5000/allProducts')
+    fetch('https://safe-beyond-59939.herokuapp.com/allProducts')
       .then(response => response.json())
       .then(data => setProducts(data))
   }, []);
 
   const handleDelete = id => {
     if(window.confirm("Are You Sure, You Want to Delete This Product ?")){
-      const url = `http://localhost:5000/products/${id}`;
+      const url = `https://safe-beyond-59939.herokuapp.com/products/${id}`;
     fetch(url, {
       method: 'DELETE'
     }).then(res=>res.json())

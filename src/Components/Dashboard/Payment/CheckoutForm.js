@@ -1,6 +1,6 @@
+import { CircularProgress } from '@mui/material';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import { CircularProgress } from '@mui/material';
 
 const CheckoutForm = ({ user, price }) => {
     const stripe = useStripe();
@@ -11,7 +11,7 @@ const CheckoutForm = ({ user, price }) => {
     const [clientSecret, setClientSecret] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://safe-beyond-59939.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

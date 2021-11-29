@@ -4,7 +4,7 @@ import Product from '../Products/Product/Product';
 const FirmGround = () => {
   const [products, setProducts] = useState([]);
   useEffect(()=>{
-    fetch('http://localhost:5000/products?surface=firm_ground')
+    fetch('https://safe-beyond-59939.herokuapp.com/products?surface=firm_ground')
       .then(response => response.json())
       .then(data => setProducts(data))
   }, []);

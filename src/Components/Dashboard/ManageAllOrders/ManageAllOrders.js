@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import useAuth from '../../../hooks/useAuth';
+import FlipMove from "react-flip-move";
 import {
     Link
 } from "react-router-dom";
-import FlipMove from "react-flip-move";
+import { toast, ToastContainer } from 'react-toastify';
+import useAuth from '../../../hooks/useAuth';
 
 const ManageAllOrders = () => {
   const {user, token} = useAuth();
@@ -13,7 +13,7 @@ const ManageAllOrders = () => {
   
 
   useEffect(()=>{
-    const url = `http://localhost:5000/orders`
+    const url = `https://safe-beyond-59939.herokuapp.com/orders`
     fetch(url, {
             headers: {
                 'authorization': `Bearer ${token}`
@@ -27,7 +27,7 @@ const ManageAllOrders = () => {
     const statue = {
       statue: 'Approved',
     }
-    const url = `http://localhost:5000/orders/${id}`
+    const url = `https://safe-beyond-59939.herokuapp.com/orders/${id}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -55,7 +55,7 @@ const ManageAllOrders = () => {
     const statue = {
       statue: 'Cancel',
     }
-    const url = `http://localhost:5000/orders/${id}`
+    const url = `https://safe-beyond-59939.herokuapp.com/orders/${id}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -81,7 +81,7 @@ const ManageAllOrders = () => {
     const statue = {
       statue: 'Pending',
     }
-    const url = `http://localhost:5000/orders/${id}`
+    const url = `https://safe-beyond-59939.herokuapp.com/orders/${id}`
     fetch(url, {
       method: 'PUT',
       headers: {

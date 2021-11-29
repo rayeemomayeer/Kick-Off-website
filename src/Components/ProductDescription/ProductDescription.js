@@ -19,7 +19,7 @@ const ProductDescription = () => {
   const [orderInfo, setOrderInfo] = useState(initialInfo);
 
   useEffect(() => {
-    fetch("https://whispering-island-81161.herokuapp.com/products")
+    fetch("https://safe-beyond-59939.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
         const p = data.find((p) => p._id == bootId);
@@ -43,7 +43,7 @@ const ProductDescription = () => {
 
     delete details._id;
     axios
-      .post("https://whispering-island-81161.herokuapp.com/myOrders", order)
+      .post("https://safe-beyond-59939.herokuapp.com/myOrders", order)
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("Added in to the My Orders", {

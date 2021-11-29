@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import useAuth from '../../../hooks/useAuth';
+import FlipMove from "react-flip-move";
 import {
     Link
 } from "react-router-dom";
-import FlipMove from "react-flip-move";
+import { toast, ToastContainer } from 'react-toastify';
+import useAuth from '../../../hooks/useAuth';
 
 const MyOrders = () => {
   const {user, token} = useAuth();
@@ -12,7 +12,7 @@ const MyOrders = () => {
   let subTotal = 0;
 
   useEffect(()=>{
-    const url = `https://whispering-island-81161.herokuapp.com/myOrders?email=${user.email}`
+    const url = `https://safe-beyond-59939.herokuapp.com/myOrders?email=${user.email}`
     fetch(url, {
             headers: {
                 'authorization': `Bearer ${token}`
@@ -24,7 +24,7 @@ const MyOrders = () => {
 
   const handleDelete = id => {
     if(window.confirm("Are You Sure, You Want to Delete This Item ?")){
-      const url = `https://whispering-island-81161.herokuapp.com/myOrders/${id}`;
+      const url = `https://safe-beyond-59939.herokuapp.com/myOrders/${id}`;
     fetch(url, {
       method: 'DELETE'
     }).then(res=>res.json())

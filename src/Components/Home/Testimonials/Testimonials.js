@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Testimonials = () => {
   const [reviews, setReviews] = useState([])
   useEffect(()=>{
-    const url = `https://whispering-island-81161.herokuapp.com/reviews`
+    const url = `https://safe-beyond-59939.herokuapp.com/reviews`
     fetch(url)
             .then(res => res.json())
             .then(data => setReviews(data));
