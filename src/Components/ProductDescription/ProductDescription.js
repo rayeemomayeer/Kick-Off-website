@@ -19,7 +19,7 @@ const ProductDescription = () => {
   const [orderInfo, setOrderInfo] = useState(initialInfo);
 
   useEffect(() => {
-    fetch("https://safe-beyond-59939.herokuapp.com/products")
+    fetch("https://safe-beyond-59939.herokuapp.com/allProducts")
       .then((res) => res.json())
       .then((data) => {
         const p = data.find((p) => p._id == bootId);
