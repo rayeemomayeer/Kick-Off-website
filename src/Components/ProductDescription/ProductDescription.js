@@ -123,7 +123,7 @@ const ProductDescription = () => {
             {/* Options */}
             <div className="mt-4 lg:mt-0 lg:row-span-3">
               <div className="max-w-2xl mx-auto pt-10 pb-16 px-2 sm:px-2 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-0">
-                <div className="ml-12 md:ml-0">
+                <div className="md:ml-0">
                   <section className="  bg-gray-100 bg-opacity-50">
                     <form
                       onSubmit={onSubmit}
