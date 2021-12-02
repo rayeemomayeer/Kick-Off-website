@@ -40,13 +40,13 @@ const Footer = () => {
         <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">More</h2>
         <nav className="list-none mb-10">
           <li>
-            <Link to="/adminpanel" className="text-gray-400 hover:text-white">Dashboard</Link>
+            <Link to="/dashboard" className="text-gray-400 hover:text-white">Dashboard</Link>
           </li>
           <li>
             <Link to="/login" className="text-gray-400 hover:text-white">Login</Link>
           </li>
           <li>
-            <Link to="/user/:userName" className="text-gray-400 hover:text-white">Register</Link>
+            <Link to="/register" className="text-gray-400 hover:text-white">Register</Link>
           </li>
           
         </nav>
@@ -55,7 +55,7 @@ const Footer = () => {
         <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">SUBSCRIBE</h2>
         <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
           
-          <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Signin now</button>
+          <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-left">Signin now</button>
         </div>
         
       </div>
