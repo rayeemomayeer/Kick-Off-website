@@ -29,7 +29,7 @@ const Testimonials = () => {
         <div className="-mx-3 md:flex items-start flex-wrap">
           {
             reviews.map(review => (
-              <div key={review._id} className="w-1/3 mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+              <div key={review._id} className="w-11/12 md:w-1/3 mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-5 shadow-sm">
               <div className="w-full flex mb-4 items-center">
                 {review.user?.photoURL? <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
                   <img src={review.user.photoURL} alt />
@@ -42,7 +42,7 @@ const Testimonials = () => {
                 </div>
               </div>
               <div className="w-full">
-                <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>{review.review}<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                <p className="text-base font-light leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>{review.review}<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
               </div>
               <div className="w-full pt-4">
                 <h1 className=""><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline" viewBox="0 0 20 20" fill="DarkOrange">
