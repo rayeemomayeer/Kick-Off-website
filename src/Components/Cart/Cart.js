@@ -48,7 +48,7 @@ const Cart = () => {
     }
   };
   return (
-    <div className="pt-20 md:p-24">
+    <div className="pt-20 md:p-24 z-30">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -74,11 +74,11 @@ const Cart = () => {
                 <FlipMove typeName="ul" duration={500}>
                   {orders.map((order) => (
                     <li className="py-6 px-1 md:px-0 flex flex-col md:flex-row shadow-sm md:shadow-none">
-                      <div className="flex-shrink-0 w-32 h-28 border border-gray-200 rounded-md overflow-hidden mx-auto">
+                      <div className="flex-shrink-0 w-32 h-28 border border-gray-200 rounded-md overflow-hidden mx-auto ">
                         <img
                           src={order.details.image}
                           alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
-                          className="w-full h-full object-center object-cover"
+                          className="w-full h-full object-center object-cover z-30"
                         />
                       </div>
                       <div className="ml-4 flex-1 flex flex-col">

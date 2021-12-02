@@ -80,8 +80,8 @@ export default function Navbar() {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {user?.email ? (
-                    <div>
-                      <Link to="/cart">
+                    <div className="align-middle">
+                      <Link to="/cart" className="hidden md:inline">
                         <button className="px-4 mr-2 py-2 rounded-lg  bg-opacity-75 text-yellow-400 align-bottom">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +156,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Disclosure.Panel className="sm:hidden ">
+            <Disclosure.Panel className="sm:hidden z-40">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (
                   <Link
@@ -172,11 +172,25 @@ export default function Navbar() {
                   </Link>
                 ))}
                 {user?.email ? (
-                  <Link to="/dashboard">
-                    <button className="bg-yellow-400 text-white block w-full text-left my-1 px-3 py-2 rounded-md text-base font-medium">
-                      Dashboard
-                    </button>
-                  </Link>
+                  <div className="text-center">
+                    <Link to="/dashboard">
+                      <button className="bg-yellow-400 text-white block w-full text-left my-1 px-3 py-2 rounded-md text-base font-medium">
+                        Dashboard
+                      </button>
+                    </Link>
+                    <Link to="/cart" className="">
+                      <button className="bg-yellow-400 text-white text-center block w-full my-1 px-3 py-2 rounded-md text-base font-medium">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-6 w-6 text-center"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                        </svg>
+                      </button>
+                    </Link>
+                  </div>
                 ) : (
                   <span></span>
                 )}
