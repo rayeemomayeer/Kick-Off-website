@@ -24,7 +24,7 @@ const ExploreProducts = () => {
 
   return (
     <div className="bg-white dark:bg-gray-900">
-      <div className="container px-6 py-8 mx-auto ">
+      <div className="container px-6 pt-1 md:py-8 mx-auto ">
         <div className="lg:flex lg:-mx-2">
           <div className="space-y-3 lg:w-1/5 lg:px-2 lg:space-y-4 mt-28">
             <h3 className="text-3xl pl-2 text-gray-700">Categories</h3>

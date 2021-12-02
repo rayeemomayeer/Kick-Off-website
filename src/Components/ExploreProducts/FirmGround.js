@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Product from '../Products/Product/Product';
+import ExploreProduct from "../Products/Product/ExploreProduct";
 
 const FirmGround = () => {
   const [products, setProducts] = useState([]);
@@ -17,9 +17,9 @@ const FirmGround = () => {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
 </svg> <span className="text-gray-600 text-3xl">Firm Ground</span></h1>
 
-      <div className="mt-6 grid grid-cols-1 gap-y-16 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+      <div className="mt-6 grid grid-cols-1 gap-y-16 gap-x-6 md:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {
-          products.map(tour => <Product key={tour._id} tour={tour}></Product>)
+          products.map(tour => <ExploreProduct key={tour._id} tour={tour}></ExploreProduct>)
         }
       </div>
     </div>
