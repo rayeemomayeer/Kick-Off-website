@@ -49,7 +49,7 @@ const Register = () => {
     <div className="md:px-28 md:py-20 bg-gradient-to-l from-green-800 to-gray-800">
       
       {/* component */}
-<section className="flex bg-white rounded-2xl shadow-2xl overflow-hidden mx-auto ">
+<section className="flex bg-white md:rounded-2xl md:shadow-2xl overflow-hidden mx-auto ">
   <div className="hidden lg:block lg:w-1/2 bg-cover"><img src="https://source.unsplash.com/1600x900/?football,soccer,football-boots" alt className="w-full h-full object-cover filter brightness-50" /></div>
   {
     isLoading && <CircularProgress />
