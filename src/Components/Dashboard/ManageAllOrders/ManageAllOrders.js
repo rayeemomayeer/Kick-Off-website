@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import useAuth from '../../../hooks/useAuth';
+import emailjs from 'emailjs-com';
 
 const ManageAllOrders = () => {
   const {user, token} = useAuth();
@@ -47,62 +48,126 @@ const ManageAllOrders = () => {
         draggable: true,
         progress: undefined,
         });
-        
+        var templateParams = {
+          name: userName,
+          userEmail: userEmail,
+          productName: productName,
+          message: `Your order ${productName} has been Approved. your product will be delivered soon ☺`,
+        };
+        emailjs
+          .send(
+            "service_szob5tk",
+            "template_eu34r6r",
+            templateParams,
+            "user_iwmx9VglifRks8E8Vs8XJ"
+          )
+          .then(
+            function (response) {
+              console.log("SUCCESS!", response.status, response.text);
+            },
+            function (error) {
+              console.log("FAILED...", error);
+            }
+          );        
     })
   }
 
-  const handleCancelAction = (id,userName) => {
+  const handleCancelAction = (id, userName, userEmail, productName) => {
     const statue = {
-      statue: 'Cancel',
-    }
-    const url = `https://safe-beyond-59939.herokuapp.com/orders/${id}`
+      statue: "Cancel",
+    };
+    const url = `https://safe-beyond-59939.herokuapp.com/orders/${id}`;
     fetch(url, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(statue)
-    }).then(res=>res.json())
-    .then(data=> {
-      const remaining = orders.filter(order=>order._id !== id)
-      setOrders(remaining)
-      toast(`Cancel ${userName}'s order`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        });
+      body: JSON.stringify(statue),
     })
-  }
-  const handlePendingAction = (id,userName) => {
+      .then((res) => res.json())
+      .then((data) => {
+        const remaining = orders.filter((order) => order._id !== id);
+        setOrders(remaining);
+        toast(`Cancel ${userName}'s order`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+        });
+        var templateParams = {
+          name: userName,
+          userEmail: userEmail,
+          productName: productName,
+          message: `Your order ${productName} has been Canceled. Order again or your money will be return`,
+        };
+        emailjs
+          .send(
+            "service_szob5tk",
+            "template_eu34r6r",
+            templateParams,
+            "user_iwmx9VglifRks8E8Vs8XJ"
+          )
+          .then(
+            function (response) {
+              console.log("SUCCESS!", response.status, response.text);
+            },
+            function (error) {
+              console.log("FAILED...", error);
+            }
+          );
+      });
+  };
+  const handlePendingAction = (id, userName, userEmail, productName) => {
     const statue = {
-      statue: 'Pending',
-    }
-    const url = `https://safe-beyond-59939.herokuapp.com/orders/${id}`
+      statue: "Pending",
+    };
+    const url = `https://safe-beyond-59939.herokuapp.com/orders/${id}`;
     fetch(url, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(statue)
-    }).then(res=>res.json())
-    .then(data=> {
-      const remaining = orders.filter(order=>order._id !== id)
-      setOrders(remaining)
-      toast(`Pending ${userName}'s order`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        });
+      body: JSON.stringify(statue),
     })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        const remaining = orders.filter((order) => order._id !== id);
+        setOrders(remaining);
+        toast(`Pending ${userName}'s order`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+        });
+        var templateParams = {
+          name: userName,
+          userEmail: userEmail,
+          productName: productName,
+          message: `Your order ${productName} is not available right now. you can wait or cancel your product. if you cancel your product money will be return to you.`,
+        };
+        emailjs
+          .send(
+            "service_szob5tk",
+            "template_eu34r6r",
+            templateParams,
+            "user_iwmx9VglifRks8E8Vs8XJ"
+          )
+          .then(
+            function (response) {
+              console.log("SUCCESS!", response.status, response.text);
+            },
+            function (error) {
+              console.log("FAILED...", error);
+            }
+          );
+      });
+  };
 
 
   return (
@@ -242,7 +307,9 @@ const ManageAllOrders = () => {
                                   onClick={() =>
                                     handlePendingAction(
                                       order._id,
-                                      order.userName
+                                      order.userName,
+                                      order.email,
+                                      order.details.name
                                     )
                                   }
                                   className="font-bold text-yellow-600 hover:text-yellow-700 rounded-lg bg-yellow-100 p-2 font-mono"
@@ -268,7 +335,9 @@ const ManageAllOrders = () => {
                                   onClick={() =>
                                     handleCancelAction(
                                       order._id,
-                                      order.userName
+                                      order.userName,
+                                      order.email,
+                                      order.details.name
                                     )
                                   }
                                   className="font-bold text-red-600 hover:text-red-700 rounded-lg bg-red-100 p-2 font-mono"
