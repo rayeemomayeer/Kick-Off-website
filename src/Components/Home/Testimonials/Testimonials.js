@@ -10,7 +10,7 @@ const Testimonials = () => {
             .then(data => setReviews(data));
     }, [])
   return (
-    <div>
+    <div id="testimonials">
       <div>
         {/* component */}
         <style

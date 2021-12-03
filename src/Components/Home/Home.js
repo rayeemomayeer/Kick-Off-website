@@ -17,7 +17,7 @@ const Home = () => {
     <div>
       <Navbar></Navbar>
       <TopBanner></TopBanner>
-      <div id="" className="bg-white ">
+      <div id="products" className="bg-white ">
         <div className="max-w-2xl mx-auto pt-8 px-4 pb-16 sm:pt-24 sm:px-6 lg:max-w-7xl lg:px-8">
           
           <div className="text-center max-w-xl mx-auto">
