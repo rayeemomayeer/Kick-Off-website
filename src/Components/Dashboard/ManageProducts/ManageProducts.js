@@ -116,9 +116,9 @@ const ManageProducts = () => {
                     </p>
 
                     <div>
-                      <Link to={`/edit/${tour?._id}`}>
+                      <Link to={`/boot/${tour?._id}`}>
                         <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-indigo-700 rounded hover:bg-indigo-700 dark:hover:bg-red-600 focus:bg-indigo-700 dark:focus:bg-gray-600 focus:outline-none mr-2">
-                          edit
+                          preview
                         </button>
                       </Link>
 
