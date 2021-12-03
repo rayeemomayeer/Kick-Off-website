@@ -2,26 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useAuth from "./../../hooks/useAuth";
 import ImageGallery from "react-image-gallery";
-import { styled } from "@mui/material/styles";
 
-const MyTooltip = styled(({ className, ...props }) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: "rgb(11, 133, 93)",
-    color: "white",
-    boxShadow: theme.shadows[1],
-    fontSize: 14,
-    position: "fixed",
-  },
-}));
 
-const ProductDescription = () => {
+const ProductImgPreview = () => {
   const { bootId } = useParams();
   const [details, setDetails] = useState({});
   const { user } = useAuth();
@@ -100,87 +87,27 @@ const ProductDescription = () => {
             </button>
           </Link>
           {/* Image gallery */}
-          <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-            <div className="block mt-6 md:w-8/12 text-center mx-auto md:hidden">
-              <ImageGallery
-                items={[
-                  {
-                    original: details.detailImage,
-                    thumbnail: details.detailImage,
-                  },
-                  {
-                    original: details.detailImage2,
-                    thumbnail: details.detailImage2,
-                  },
-                  {
-                    original: details.detailImage3,
-                    thumbnail: details.detailImage3,
-                  },
-                  {
-                    original: details.detailImage4,
-                    thumbnail: details.detailImage4,
-                  },
-                ]}
-              />
-            </div>
-            <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4 hidden md:block">
-              <MyTooltip
-                          title={`click to see the image`}
-                          placement="bottom"
-                        >
-              <Link to={`/bootImgPreview/${bootId}`}>
-                <img
-                  src={details?.detailImage}
-                  alt="Model wearing plain white basic tee."
-                  className="w-full h-full object-center object-cover"
-                />
-              </Link>
-              </MyTooltip>
-            </div>
-            <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-              <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-                <MyTooltip
-                          title={`click to see the image`}
-                          placement="bottom"
-                        >
-                <Link to={`/bootImgPreview/${bootId}`}>
-                  <img
-                    src={details?.detailImage2}
-                    alt="Model wearing plain black basic tee."
-                    className="w-full h-full object-center object-cover"
-                  />
-                </Link>
-                </MyTooltip>
-              </div>
-              <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-                <MyTooltip
-                          title={`click to see the image`}
-                          placement="bottom"
-                        >
-                <Link to={`/bootImgPreview/${bootId}`}>
-                  <img
-                    src={details?.detailImage3}
-                    alt="Model wearing plain gray basic tee."
-                    className="w-full h-full object-center object-cover"
-                  />
-                </Link>
-                </MyTooltip>
-              </div>
-            </div>
-            <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4 hidden md:block">
-              <MyTooltip
-                          title={`click to see the image`}
-                          placement="bottom"
-                        >
-              <Link to={`/bootImgPreview/${bootId}`}>
-                <img
-                  src={details?.detailImage4}
-                  alt="Model wearing plain white basic tee."
-                  className="w-full h-full object-center object-cover"
-                />
-              </Link>
-              </MyTooltip>
-            </div>
+          <div className="mt-6 md:w-8/12 text-center mx-auto">
+            <ImageGallery
+              items={[
+                {
+                  original: details.detailImage,
+                  thumbnail: details.detailImage,
+                },
+                {
+                  original: details.detailImage2,
+                  thumbnail: details.detailImage2,
+                },
+                {
+                  original: details.detailImage3,
+                  thumbnail: details.detailImage3,
+                },
+                {
+                  original: details.detailImage4,
+                  thumbnail: details.detailImage4,
+                },
+              ]}
+            />
           </div>
           {/* Product info */}
           <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
@@ -702,4 +629,4 @@ const ProductDescription = () => {
   );
 };
 
-export default ProductDescription;
+export default ProductImgPreview;

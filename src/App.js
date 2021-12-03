@@ -20,6 +20,7 @@ import NotFound from './Components/NotFound/NotFound';
 import ExploreProducts from './Components/ExploreProducts/ExploreProducts';
 import AdminRoute from './Components/Login/AdminRoute/AdminRoute';
 import EditProduct from './Components/Dashboard/EditProduct/EditProduct';
+import ProductImgPreview from './Components/ProductDescription/ProductImgPreview';
 
 function App() {
   return (
@@ -55,6 +56,9 @@ function App() {
           </Route>
           <PrivateRoute path="/boot/:bootId">
             <ProductDescription/>
+          </PrivateRoute>
+          <PrivateRoute path="/bootImgPreview/:bootId">
+            <ProductImgPreview/>
           </PrivateRoute>
           <AdminRoute path="/edit/:bootId">
             <EditProduct/>

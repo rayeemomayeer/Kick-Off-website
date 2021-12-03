@@ -1,10 +1,12 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import bootLogo from "./football-boots.png";
+import { styled } from "@mui/material/styles";
 
 const navigation = [
   { name: "Home", to: "/home", current: true },
@@ -14,6 +16,17 @@ const navigation = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
+const MyTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: "rgb(11, 133, 93)",
+    color: "white",
+    boxShadow: theme.shadows[1],
+    fontSize: 14,
+  },
+}));
 
 export default function Navbar() {
   const { user, logOut } = useAuth();
@@ -54,24 +67,34 @@ export default function Navbar() {
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
-                        <Link
-                          to={item.to}
-                          className={classNames(
-                            item.current
-                              ? "bg-green-500 text-white"
-                              : "bg-yellow-400 bg-opacity-75 text-white",
-                            "px-3 py-2 rounded-md text-sm font-medium"
-                          )}
+                        <MyTooltip
+                          title={`navigate to ${item.name}`}
+                          placement="bottom"
                         >
-                          {item.name}
-                        </Link>
+                          <Link
+                            to={item.to}
+                            className={classNames(
+                              item.current
+                                ? "bg-green-500 text-white"
+                                : "bg-yellow-400 bg-opacity-75 text-white",
+                              "px-3 py-2 rounded-md text-sm font-medium"
+                            )}
+                          >
+                            {item.name}
+                          </Link>
+                        </MyTooltip>
                       ))}
                       {user?.email ? (
-                        <Link to="/dashboard">
-                          <button className="bg-yellow-400 bg-opacity-75 text-white px-3 py-2 rounded-md text-sm font-medium">
-                            Dashboard
-                          </button>
-                        </Link>
+                        <MyTooltip
+                          title={`navigate to dashboard`}
+                          placement="bottom"
+                        >
+                          <Link to="/dashboard">
+                            <button className="bg-yellow-400 bg-opacity-75 text-white px-3 py-2 rounded-md text-sm font-medium">
+                              Dashboard
+                            </button>
+                          </Link>
+                        </MyTooltip>
                       ) : (
                         <span></span>
                       )}
