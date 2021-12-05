@@ -7,7 +7,6 @@ import {
   Link
 } from "react-router-dom";
 import Home from './Components/Home/Home';
-import Cart from './Components/Cart/Cart';
 import Navbar from './Components/Shared/Navbar/Navbar';
 import ProductDescription from './Components/ProductDescription/ProductDescription';
 import Login from './Components/Login/Login/Login';
@@ -39,11 +38,7 @@ function App() {
             <ExploreProducts/>
             <Footer/>
           </Route>
-          <Route path="/cart">
-            <Navbar></Navbar>
-            <Cart />
-            <Footer/>
-          </Route>
+          
           <Route path="/login">
             <Navbar/>
             <Login />
