@@ -149,7 +149,8 @@ function Dashboard(props) {
         </Route>
 
         <Route path={`${path}/payment`}>
-          <Payment></Payment>
+          <h1 className="text-7xl text-center">Payment system comming soon...</h1>
+          {/* <Payment></Payment> */}
         </Route>
 
         <Route path={`${path}/review`}>

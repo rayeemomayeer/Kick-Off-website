@@ -26,10 +26,13 @@ const Payment = () => {
 
   return (
     <div>
-      <h1 className="text-5xl text-center" >Payment for {orders.length} orders price $ {price}</h1>
+      <h1 className="text-7xl text-center">Payment system coming soon...</h1>
+      {/* <h1 className="text-5xl text-center">
+        Payment for {orders.length} orders price $ {price}
+      </h1>
       <Elements stripe={stripePromise}>
         <CheckoutForm price={price} user={user} />
-      </Elements>
+      </Elements> */}
     </div>
   );
 };
