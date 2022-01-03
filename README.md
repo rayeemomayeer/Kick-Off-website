@@ -8,12 +8,8 @@ Open [https://kick-off-7eda3.web.app/](https://kick-off-7eda3.web.app/) to view 
 
 ### About
 
-1. football boots, shoes, trufs
-2. design and website idea is unique
-3. Home page have a header (simple navbar), banner, destination, tours, services, gallery, and footer.
-4. Private route only visible for Logged in User
-5. data uploded from server
-6. Tours details has been shown
-7. user can add product in to cart
-8. user add to the cart will showed in my order
-9. have a nice footer
+This is a full-stack project. Facilities of this website are given below -
+user and admin interface. Users can log in or register an account and the admin can log in with a valid email and password
+users can preview and add products to the cart and then check out all products added to the cart with the international payment system. and the last user can write a review also which will be shown on the home
+admin have all the features include Manage All Orders, Make Admin, Add Product and Manage Products into the dashboard
+

@@ -56,10 +56,10 @@ function App() {
             <ProductImgPreview/>
           </PrivateRoute>
           <AdminRoute path="/edit/:bootId">
-            <EditProduct/>
+            <EditProduct></EditProduct>
           </AdminRoute>
           <PrivateRoute path="/dashboard">
-            <Dashboard />
+            <Dashboard></Dashboard>
           </PrivateRoute>
           <Route exact path="*">
             <NotFound></NotFound>
